@@ -20,6 +20,7 @@ object DwdFactSztInDetail extends Logging {
     val spark: SparkSession = SparkSession
       .builder()
       .appName("DwdFactSztInDetail")
+      .config("spark.sql.shuffle.partitions",2)
       .enableHiveSupport()
       .getOrCreate()
 
