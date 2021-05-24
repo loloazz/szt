@@ -7,10 +7,54 @@
     <groupId>com.shujia</groupId>
     <artifactId>szt</artifactId>
     <version>1.0</version>
+    <packaging>pom</packaging>
+
+
+
+    <modules>
+        <module>sztdwd</module>
+    </modules>
 
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <spark.version>2.4.5</spark.version>
+        <scala.lib.version>2.11</scala.lib.version>
+        <scala.version>2.11.12</scala.version>
     </properties>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-sql_${scala.lib.version}</artifactId>
+                <version>${spark.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.scala-lang</groupId>
+                <artifactId>scala-library</artifactId>
+                <version>${scala.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.scala-lang</groupId>
+                <artifactId>scala-compiler</artifactId>
+                <version>${scala.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.scala-lang</groupId>
+                <artifactId>scala-reflect</artifactId>
+                <version>${scala.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.shujia</groupId>
+                <artifactId>common</artifactId>
+                <version>1.0</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+
 
 </project>

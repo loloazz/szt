@@ -36,18 +36,20 @@ spark-sql \
 --conf spark.sql.shuffle.partitions=4 \
 -e "
 
+
+
 INSERT OVERWRITE TABLE dwd.dwd_fact_szt_in_out_detail partition(DAY = '${day}')
-SELECT deal_date,
-   close_date,
+SELECT car_no,
    card_no,
-   deal_value,
-   deal_type,
+   close_date,
    company_name,
-   car_no,
-   station,
    conn_mark,
+   deal_date,
    deal_money,
-   equ_no
+   deal_type,
+   deal_value,
+   equ_no,
+   station
 FROM ods.ods_szt_data
 WHERE deal_type != '巴士'
       AND unix_timestamp(deal_date, 'yyyy-MM-dd HH:mm:ss') > unix_timestamp('${day} 06:14:00', 'yyyy-MM-dd HH:mm:ss')
@@ -56,6 +58,8 @@ WHERE deal_type != '巴士'
 ORDER BY deal_date
 
 "
+
+
 
 
 
