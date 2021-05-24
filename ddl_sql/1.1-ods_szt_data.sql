@@ -1,7 +1,7 @@
 
 --2 ODS 原始数据不做任何处理
 drop table IF EXISTS ods.ods_szt_data;
-create EXTERNAL TABLE IF NOT EXISTS  ods_szt_data(
+create EXTERNAL TABLE IF NOT EXISTS  ods.ods_szt_data(
     car_no String comment '车牌号',
     card_no String comment '卡号',
     close_date String comment '结算日期',
@@ -23,6 +23,10 @@ ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 STORED AS INPUTFORMAT 'org.apache.hadoop.mapred.TextInputFormat'
     OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
 location '/daas/szt/ods/ods_szt_data';
+
+alter table ods.ods_szt_data add if not exists partition(day='2018-09-01') ;
+
+
 
 
 select * from ods_szt_data where DAY = '2018-09-01' LIMIT 10;

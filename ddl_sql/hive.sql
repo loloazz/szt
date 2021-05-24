@@ -46,7 +46,7 @@ deal_money String,
 equ_no String) 
 PARTITIONED BY(DAY STRING) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LOCATION '/warehouse/szt.db/dwd/dwd_fact_szt_in_out_detail';
 
-INSERT OVERWRITE TABLE dwd_fact_szt_in_out_detail partition(DAY = '2018-09-01')
+INSERT OVERWRITE TABLE dwd.dwd_fact_szt_in_out_detail partition(DAY = '2018-09-01')
 SELECT deal_date,
        close_date,
        card_no,
@@ -58,7 +58,7 @@ SELECT deal_date,
        conn_mark,
        deal_money,
        equ_no
-FROM ods_szt_data
+FROM ods.ods_szt_data
 WHERE deal_type != '巴士'
       AND unix_timestamp(deal_date, 'yyyy-MM-dd HH:mm:ss') > unix_timestamp('2018-09-01 06:14:00', 'yyyy-MM-dd HH:mm:ss')
   AND unix_timestamp(deal_date, 'yyyy-MM-dd HH:mm:ss') < unix_timestamp('2018-09-01 23:59:00', 'yyyy-MM-dd HH:mm:ss')
