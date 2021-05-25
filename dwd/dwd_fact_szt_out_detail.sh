@@ -39,23 +39,24 @@ spark-sql \
 
 
 INSERT OVERWRITE TABLE dwd.dwd_fact_szt_out_detail partition(DAY = '${day}')
-SELECT deal_date,
+SELECT  car_no ,
+       card_no ,
        close_date,
-       card_no,
-       deal_value,
-       deal_type,
        company_name,
-       car_no,
-       station,
-       conn_mark,
-       deal_money,
-       equ_no
+       conn_mark ,
+       deal_date ,
+       deal_money ,
+       deal_type ,
+       deal_value,
+       equ_no,
+       station
 FROM dwd.dwd_fact_szt_in_out_detail
 WHERE deal_type = '地铁出站'
   AND DAY = '${day}'
 ORDER BY deal_date
 
 "
+
 
 
 

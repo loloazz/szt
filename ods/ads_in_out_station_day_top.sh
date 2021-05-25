@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# **  文件名称: dwd_fact_szt_in_out_detail.sh
+# **  文件名称: ads_in_out_station_day_top.sh
 # **  创建日期: 2020年8月22日
 # **  编写人员: qinxiao
 # **  输入信息:
 # **  输出信息:
 # **
-# **  功能描述:地铁入站数据
+# **  功能描述:地铁出入站数据
 # **  处理过程:
 # **  Copyright(c) 2016 TianYi Cloud Technologies (China), Inc.
 # **  All Rights Reserved.
@@ -36,18 +36,21 @@ spark-sql \
 --conf spark.sql.shuffle.partitions=4 \
 -e "
 
-INSERT OVERWRITE TABLE ads.ads_in_station_day_top PARTITION(DAY = '${day}')
+INSERT OVERWRITE TABLE ads.ads_in_out_station_day_top PARTITION(DAY = '${day}')
 SELECT station,
        collect_list(deal_date),
        collect_list(card_no),
+       collect_list(deal_value),
+       collect_list(deal_type),
        collect_list(company_name),
+       collect_list(conn_mark),
+       collect_list(deal_money),
        collect_list(equ_no),
        count(*) c
-FROM dwd.dwd_fact_szt_in_detail
-WHERE DAY = '${day}' and  station <> '""'
+FROM dwd.dwd_fact_szt_in_out_detail
+WHERE DAY = '${day}'
 GROUP BY station
 ORDER BY c DESC
-
 "
 
 

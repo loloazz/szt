@@ -1,8 +1,8 @@
 
 -- 【体现线路运输贡献度】 每线路单日运输乘客总次数排行榜，进站算一次，出站并且联程算一次
 
-DROP TABLE IF EXISTS ods.ads_line_send_passengers_day_top;
-CREATE EXTERNAL TABLE ods.ads_line_send_passengers_day_top(
+DROP TABLE IF EXISTS ads.ads_line_send_passengers_day_top;
+CREATE EXTERNAL TABLE ads.ads_line_send_passengers_day_top(
 company_name String comment '线路名',
 `count` int
 )

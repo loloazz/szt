@@ -2,8 +2,8 @@
 
 -- 【体现利用率最高的车站区间】 每日运输乘客最多的车站区间排行榜
 
-drop table if exists ods.ads_stations_send_passengers_day_top;
-create external table ods.ads_stations_send_passengers_day_top(
+drop table if exists ads.ads_stations_send_passengers_day_top;
+create external table ads.ads_stations_send_passengers_day_top(
 short_stations string comment '车站区间',
 `count` int
 )

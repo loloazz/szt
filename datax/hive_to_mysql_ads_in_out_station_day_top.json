@@ -1,0 +1,60 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 3
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "hdfsreader",
+                    "parameter": {
+                        "path": "/daas/szt/ads/ads_in_out_station_day_top/day=2018-09-01/*",
+                        "defaultFS": "hdfs://master:9000",
+                        "column": [
+                               {
+                                "index": 0,
+                                "type": "STRING"
+                               },
+                               {
+                                "index": 5,
+                                "type": "long"
+                               },
+                               {
+                                "type": "string",
+                                "value": "2018-09-01"
+                               }
+                        ],
+                        "fileType": "text",
+                        "encoding": "UTF-8",
+                        "fieldDelimiter": ","
+                    }
+
+                },
+                "writer": {
+                    "name": "mysqlwriter",
+                    "parameter": {
+                        "writeMode": "insert",
+                        "username": "root",
+                        "password": "123456",
+                        "column": [
+                            "station",
+                            "count",
+                            "day"
+                        ],
+                       
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:mysql://node1:3306/szt_ods?useUnicode=true&characterEncoding=gbk",
+                                "table": [
+                                    "ads_in_out_station_day_top"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

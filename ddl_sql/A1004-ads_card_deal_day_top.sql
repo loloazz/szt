@@ -1,6 +1,6 @@
 ---卡片单日消费排行榜
-drop table IF EXISTS ods.ads_card_deal_day_top;
-create EXTERNAL TABLE ods.ads_card_deal_day_top (
+drop table IF EXISTS ads.ads_card_deal_day_top;
+create EXTERNAL TABLE ads.ads_card_deal_day_top (
     card_no STRING comment '卡号',
     deal_date_arr ARRAY<STRING> comment '交易时间',
     deal_sum DOUBLE  comment '交易总值',

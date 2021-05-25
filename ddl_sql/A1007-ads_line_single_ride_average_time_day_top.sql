@@ -1,5 +1,5 @@
-drop table if exists ods.ads_line_single_ride_average_time_day_top;
-create external table ods.ads_line_single_ride_average_time_day_top(
+drop table if exists ads.ads_line_single_ride_average_time_day_top;
+create external table ads.ads_line_single_ride_average_time_day_top(
 company_name string,
 avg_time_s double
 )

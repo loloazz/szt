@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# **  文件名称: dwd_fact_szt_in_out_detail.sh
+# **  文件名称: ads_card_deal_day_top.sh
 # **  创建日期: 2020年8月22日
 # **  编写人员: qinxiao
 # **  输入信息:
 # **  输出信息:
 # **
-# **  功能描述:地铁入站数据
+# **  功能描述:卡片单日消费排行榜
 # **  处理过程:
 # **  Copyright(c) 2016 TianYi Cloud Technologies (China), Inc.
 # **  All Rights Reserved.
@@ -36,17 +36,28 @@ spark-sql \
 --conf spark.sql.shuffle.partitions=4 \
 -e "
 
-INSERT OVERWRITE TABLE ads.ads_in_station_day_top PARTITION(DAY = '${day}')
-SELECT station,
-       collect_list(deal_date),
-       collect_list(card_no),
-       collect_list(company_name),
-       collect_list(equ_no),
-       count(*) c
-FROM dwd.dwd_fact_szt_in_detail
-WHERE DAY = '${day}' and  station <> '""'
-GROUP BY station
-ORDER BY c DESC
+insert overwrite table ads_card_deal_day_top partition (day='${day}')
+SELECT
+    t1.card_no,
+    t1.deal_date_arr,
+    t2.deal_sum,
+    t1.company_name_arr,
+    t1.station_arr,
+    t1.conn_mark_arr,
+    t3.deal_m_sum,
+    t1.equ_no_arr,
+    t1.`count`
+from
+    dws_card_record_day_wide as t1,
+    (SELECT card_no, sum(deal_v) OVER(PARTITION BY card_no) AS deal_sum FROM dws_card_record_day_wide LATERAL VIEW explode(deal_value_arr) tmp as deal_v )t2,
+    (SELECT card_no, sum(deal_m) OVER(PARTITION BY card_no) AS deal_m_sum FROM dws_card_record_day_wide LATERAL VIEW explode(deal_money_arr) tmp as deal_m )t3
+
+    WHERE t1.day='${day}'  AND
+    t1.card_no = t2.card_no AND
+    t2.card_no = t3.card_no
+    ORDER BY t2.deal_sum DESC
+
+
 
 "
 
