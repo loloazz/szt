@@ -25,21 +25,24 @@ object DwdFactSztInDetail extends Logging {
       .getOrCreate()
 
 
+
+
+
     spark.sql(
       s"""
          |
         |INSERT OVERWRITE TABLE dwd.dwd_fact_szt_in_detail partition(DAY = '$day')
-         |SELECT deal_date,
-         |       close_date,
-         |       card_no,
-         |       deal_value,
-         |       deal_type,
-         |       company_name,
-         |       car_no,
-         |       station,
-         |       conn_mark,
-         |       deal_money,
-         |       equ_no
+         |SELECT car_no ,
+         |    card_no ,
+         |    close_date ,
+         |    company_name ,
+         |    conn_mark ,
+         |    deal_date ,
+         |    deal_money ,
+         |    deal_type,
+         |    deal_value ,
+         |    equ_no  ,
+         |    station
          |FROM dwd.dwd_fact_szt_in_out_detail
          |WHERE deal_type = '地铁入站'
          |  AND DAY = '$day'

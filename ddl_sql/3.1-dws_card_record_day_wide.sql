@@ -12,7 +12,7 @@ create EXTERNAL TABLE dws.dws_card_record_day_wide(
     conn_mark_arr ARRAY < STRING >  comment '联程标记',
     deal_money_arr ARRAY < STRING >  comment '交易金额',
     equ_no_arr ARRAY < STRING >  comment '设备编码',
-    `count` int,
+    `count` int
 )
 comment  '宽表'
 PARTITIONED BY (

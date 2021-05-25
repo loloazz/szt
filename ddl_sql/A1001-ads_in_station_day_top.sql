@@ -1,6 +1,6 @@
 
-drop table IF EXISTS ods.ads_in_station_day_top;
-CREATE EXTERNAL TABLE ods.ads_in_station_day_top(
+drop table IF EXISTS ads.ads_in_station_day_top;
+CREATE EXTERNAL TABLE ads.ads_in_station_day_top(
     station STRING comment '线路站点',
     deal_date_arr ARRAY < STRING > comment '交易时间列表',
     card_no_arr ARRAY < STRING > comment '卡号列表',
