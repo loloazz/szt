@@ -354,7 +354,7 @@ SELECT company_name,
     deal_type,
     conn_mark,
     count(*) c
-FROM dwd_fact_szt_in_out_detail
+FROM dwd.dwd_fact_szt_in_out_detail
 WHERE DAY = '2018-09-01' and deal_type='地铁入站'
 GROUP BY company_name,deal_type,conn_mark
 ORDER BY c DESC ;
@@ -365,13 +365,13 @@ SELECT company_name,
     deal_type,
     conn_mark,
     count(*) c
-FROM dwd_fact_szt_in_out_detail
+FROM dwd.dwd_fact_szt_in_out_detail
 WHERE DAY = '2018-09-01' and deal_type='地铁出站' and conn_mark='1'
 GROUP BY company_name,deal_type,conn_mark
 ORDER BY c DESC ;
 
 --t3
-INSERT OVERWRITE TABLE ads_line_send_passengers_day_top PARTITION(DAY = '2018-09-01')
+INSERT OVERWRITE TABLE ads.ads_line_send_passengers_day_top PARTITION(DAY = '2018-09-01')
 SELECT t1.company_name,
     t1.c+t2.c AS c
 FROM 
@@ -379,7 +379,7 @@ FROM
         deal_type,
         conn_mark,
         count(*) c
-    FROM dwd_fact_szt_in_out_detail
+    FROM dwd.dwd_fact_szt_in_out_detail
     WHERE DAY = '2018-09-01' and deal_type='地铁入站'
     GROUP BY company_name,deal_type,conn_mark) 
     t1,
@@ -388,7 +388,7 @@ FROM
         deal_type,
         conn_mark,
         count(*) c
-    FROM dwd_fact_szt_in_out_detail
+    FROM dwd.dwd_fact_szt_in_out_detail
     WHERE DAY = '2018-09-01' and deal_type='地铁出站' and conn_mark='1'
     GROUP BY company_name,deal_type,conn_mark) 
     t2
