@@ -13,6 +13,7 @@
 
     <modules>
         <module>sztdwd</module>
+        <module>szt_api</module>
     </modules>
 
     <properties>
