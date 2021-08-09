@@ -30,12 +30,11 @@ day=$1
 
 spark-sql \
 --master yarn-client \
---num-executors 2 \
---executor-memory 2G \
---executor-cores 1 \
+--num-executors 1 \
+--executor-memory 4G \
+--executor-cores 2 \
 --conf spark.sql.shuffle.partitions=4 \
 -e "
-
 
 
 INSERT OVERWRITE TABLE dwd.dwd_fact_szt_in_out_detail partition(DAY = '${day}')
