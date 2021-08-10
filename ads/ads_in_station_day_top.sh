@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# **  文件名称: dwd_fact_szt_in_out_detail.sh
+# **  文件名称: ads_in_station_day_top.sh
 # **  创建日期: 2020年8月22日
 # **  编写人员: qinxiao
 # **  输入信息:
 # **  输出信息:
 # **
-# **  功能描述:地铁入站数据
+# **  功能描述:进站人次排行榜
 # **  处理过程:
 # **  Copyright(c) 2016 TianYi Cloud Technologies (China), Inc.
 # **  All Rights Reserved.
@@ -27,6 +27,8 @@ cd $shell_home
 
 day=$1
 
+a='""'
+
 
 spark-sql \
 --master yarn-client \
@@ -44,7 +46,7 @@ SELECT station,
        collect_list(equ_no),
        count(*) c
 FROM dwd.dwd_fact_szt_in_detail
-WHERE DAY = '${day}' and  station <> '""'
+WHERE DAY = '${day}' and  station <> '${a}'
 GROUP BY station
 ORDER BY c DESC
 

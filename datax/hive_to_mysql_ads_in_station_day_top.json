@@ -46,7 +46,7 @@
                        
                         "connection": [
                             {
-                                "jdbcUrl": "jdbc:mysql://node1:3306/szt_ods?useUnicode=true&characterEncoding=gbk",
+                                "jdbcUrl": "jdbc:mysql://master:3306/szt_ads?useUnicode=true&characterEncoding=gbk",
                                 "table": [
                                     "ads_in_station_day_top"
                                 ]

@@ -30,6 +30,7 @@ day=$1
 
 spark-sql \
 --master yarn-client \
+--name dws_card_record_day_wide \
 --num-executors 2 \
 --executor-memory 2G \
 --executor-cores 1 \

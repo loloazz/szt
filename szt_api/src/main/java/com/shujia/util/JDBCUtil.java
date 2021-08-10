@@ -11,10 +11,11 @@ public class JDBCUtil {
 
     static {
 
+        //数据库连接池
         dataSource = new BasicDataSource();
 
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://node1:3306/szt_ods?useUnicode=true&characterEncoding=utf-8");
+        dataSource.setUrl("jdbc:mysql://master:3306/szt_ads?useUnicode=true&characterEncoding=utf-8");
         dataSource.setUsername("root");
         dataSource.setPassword("123456");
 
