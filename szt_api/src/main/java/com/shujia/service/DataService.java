@@ -15,7 +15,7 @@ public class DataService {
     private DataDao dataDao;
 
 
-    public ArrayList<LineSendPassengersDayTop> ads_line_send_passengers_day_top(String day) {
+     public ArrayList<LineSendPassengersDayTop> ads_line_send_passengers_day_top(String day) {
         return dataDao.ads_line_send_passengers_day_top(day);
     }
 
