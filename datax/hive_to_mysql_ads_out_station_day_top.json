@@ -10,7 +10,7 @@
                 "reader": {
                     "name": "hdfsreader",
                     "parameter": {
-                        "path": "/daas/szt/ads/ads_out_station_day_top/day=2018-09-01/*",
+                        "path": "/daas/szt/ads/ads_out_station_day_top/day=${day}/*",
                         "defaultFS": "hdfs://master:9000",
                         "column": [
                                {
@@ -23,7 +23,7 @@
                                },
                                {
                                 "type": "string",
-                                "value": "2018-09-01"
+                                "value": "${day}"
                                }
                         ],
                         "fileType": "text",

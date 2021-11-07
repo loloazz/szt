@@ -27,7 +27,6 @@ object DwdFactSztInDetail extends Logging {
 
 
 
-
     spark.sql(
       s"""
          |
