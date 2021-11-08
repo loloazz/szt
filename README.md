@@ -5,6 +5,7 @@
 ## 元数据存储位置：mysql
 ## 提供数据服务： SpringBoot
 ## 任务提交方式：shell + dolphinscheduler
+## 数据同步工具：dataX
 ## 开发工具： vscode + idea
 
 
