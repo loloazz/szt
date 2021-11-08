@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/szt.iml" filepath="$PROJECT_DIR$/szt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sztdwd/szt-dwd.iml" filepath="$PROJECT_DIR$/sztdwd/szt-dwd.iml" />
+      <module fileurl="file://$PROJECT_DIR$/szt_api/szt_api.iml" filepath="$PROJECT_DIR$/szt_api/szt_api.iml" />
+    </modules>
+  </component>
+</project>

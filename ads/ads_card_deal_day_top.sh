@@ -37,6 +37,8 @@ spark-sql \
 -e "
 
 insert overwrite table ads.ads_card_deal_day_top partition (day='${day}')
+
+
 SELECT
     t1.card_no,
     t1.deal_date_arr,
@@ -56,9 +58,6 @@ from
     t1.card_no = t2.card_no AND
     t2.card_no = t3.card_no
     ORDER BY t2.deal_sum DESC
-
-
-
 "
 
 
